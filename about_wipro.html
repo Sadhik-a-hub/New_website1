@@ -1,0 +1,158 @@
+<h1> Wipro Technical Question And Answer</h1>
+<p>
+    <h4>Frontend Questions</h4>
+    <h4>1. What is the difference between React and Angular?</h4>
+    Answer:
+    
+    <h5>Feature React Angular</h5>
+    <h5>Type</h5>	Library	Framework
+    <h5>Language</h5>	JavaScript	TypeScript
+    <h5>Data Binding</h5>	One-way	Two-way
+    <h5>Performance </h5>	Fast (Virtual DOM)	Slightly slower (Real DOM)
+    <h5>Learning </h5>Curve	Easier	Steeper 
+    
+    <h4>2. Explain the Virtual DOM in React.</h4>
+    Answer:
+    Virtual DOM is a lightweight copy of the Real DOM.
+    React uses diffing and reconciliation to update only the changed parts of the DOM, improving performance.
+    Example:
+    User interacts with a React component.
+    React updates the Virtual DOM instead of the actual DOM.
+    It compares (diffs) the new Virtual DOM with the previous version.
+    Only the changed elements get updated in the Real DOM.
+    
+    <h4>3. What is the difference between Local Storage, Session Storage, and Cookies?</h4>
+    Answer:
+    <h5>Feature	Local Storage	Session Storage	Cookies</h5>
+    <h5>Storage Limit</h5>	5MB	5MB	4KB
+    <h5>Expiry</h5>	Never (unless manually cleared)	Cleared when session ends	Can have expiry time
+    <h5>Accessible By</h5>	Same-origin JavaScript	Same-origin JavaScript	Sent with HTTP requests
+   <h5>> Use Case</h5>	Store user preferences	Temporary data during session	Authentication tokens
+    
+    Backend Questions
+    <h4>4. Explain the difference between REST and GraphQL.</h4>
+    Answer:
+    Feature	REST	GraphQL
+    Data Fetching	Fixed endpoints (/users, /posts)	Single endpoint (/graphql)
+    Over-fetching	Yes, gets extra data	No, fetches only required fields
+    Under-fetching	Yes, may need multiple requests	No, gets everything in one request
+    Performance	Can be slower (multiple requests)	Faster (single request)
+    
+    <h4>5. What is Middleware in Express.js?</h4>
+    Answer:
+    	Middleware is a function that executes before reaching the final request handler in Express.js.
+    	Used for authentication, logging, error handling, and modifying requests.
+    Example:
+    const express = require('express');
+    const app = express();
+    
+    // Middleware function
+    app.use((req, res, next) => {
+      console.log('Request received');
+      next(); // Pass control to next middleware
+    });
+    
+    app.get('/', (req, res) => {
+      res.send('Hello, World!');
+    });
+    
+    app.listen(3000);
+    
+    <h4>6. Explain JWT Authentication in Node.js.</h4>
+    Answer:
+    JWT (JSON Web Token) is used for secure user authentication.
+    	User logs in with credentials.
+    	Server creates a JWT token and sends it to the user.
+    	User sends JWT in Authorization header for subsequent requests.
+    	Server validates JWT before granting access.
+    Example in Node.js:
+    const jwt = require('jsonwebtoken');
+    
+    const token = jwt.sign({ userId: 123 }, 'secretkey', { expiresIn: '1h' });
+    
+    console.log(token);
+    
+    <h4>Database Questions</h4>
+
+    <h4>7. What is the difference between SQL and NoSQL?</h4>
+    Answer:
+    Feature	SQL	NoSQL
+    Schema	Fixed Schema	Flexible Schema
+    Data Storage	Tables (Rows & Columns)	Key-Value, Document, Graph
+    Scalability	Vertical Scaling	Horizontal Scaling
+    Examples	MySQL, PostgreSQL	MongoDB, Cassandra
+    
+    <h4>8. How do you perform Pagination in MongoDB?</h4>
+    Answer:
+    Pagination helps fetch limited results in large datasets.
+    Example using skip() and limit():
+    db.users.find().skip(10).limit(5);
+    	skip(10) → Skips first 10 records.
+    	limit(5) → Fetches next 5 records.
+    
+    <h4>9. What is Indexing in Databases?</h4>
+    Answer:
+    Indexing improves the speed of data retrieval.
+    Example in MySQL:
+    CREATE INDEX idx_user ON users(name);
+    Creates an index on the "name" column for faster searches.
+    
+    <h4>DevOps & Cloud Questions</h4>
+    
+    <h4>10. What is Docker, and why is it used?</h4>
+    Answer:
+    	Docker is a containerization tool that packages applications with dependencies, ensuring consistency across environments.
+    	Benefits: 
+    	Lightweight compared to Virtual Machines
+    	Portable across different OS
+    	Faster deployment
+    
+   <h4> 11. What is the difference between Continuous Integration and Continuous Deployment?</h4>
+    Answer:
+    Feature	CI (Continuous Integration)	CD (Continuous Deployment)
+    Definition	Automates code testing and merging	Automates full deployment to production
+    Trigger	Every code commit	Every successful test
+    Example Tool	Jenkins, GitHub Actions	AWS CodeDeploy, Kubernetes
+    
+    <h4>12. How do you deploy a Node.js app using Docker?</h4>
+    Answer:
+    1.	Create a Dockerfile
+    FROM node:14
+    WORKDIR /app
+    COPY package.json .
+    RUN npm install
+    COPY . .
+    CMD ["node", "server.js"]
+    EXPOSE 3000
+    2.	Build and Run the Container
+    docker build -t myapp .
+    docker run -p 3000:3000 myapp
+    
+    System Design Questions
+    <h4>13. How would you design a URL Shortener like Bit.ly?</h4>
+    Answer:
+    Key Components:
+    •	Frontend: React.js for UI
+    •	Backend: Node.js with Express
+    •	Database: NoSQL (MongoDB) for fast lookups
+    •	Algorithm: Base62 Encoding (abc123)
+    •	Caching: Redis for quick access
+    
+    14. <h4>How would you scale a high-traffic e-commerce website?</h4>
+    Answer:
+    1.	Load Balancer – Distribute traffic across multiple servers.
+    2.	CDN (Content Delivery Network) – Cache images & static files.
+    3.	Database Sharding – Split database for faster queries.
+    4.	Microservices – Separate cart, payments, and user services.
+    5.	Caching (Redis/Memcached) – Store frequently accessed data.
+    
+    <h4>15. How do you handle security in Full-Stack Applications?</h4>
+    Answer:
+    1.	Authentication – Use JWT, OAuth, or session-based auth.
+    2.	SQL Injection Prevention – Use parameterized queries.
+    3.	XSS Prevention – Sanitize user inputs.
+    4.	CORS Handling – Restrict cross-origin access.
+    5.	HTTPS – Encrypt data using SSL/TLS.
+    
+    
+    </p>
